@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -14,14 +22,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: antiquewhite;
 }
 
 .App-link {
@@ -35,4 +36,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.upload-container {
+  border: solid 1px white;
+  max-width: 400px;
+  width:fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 8px 12px 8px 12px;
+  background: #4e76a8;
+  border-radius: 8px;
+  box-shadow: #000000b5 1px 1px 5px;
+}
+
+.success {
+  color: rgb(255, 255, 255);
+
+  font-size: x-small;
+}
+
+.error {
+  color: rgb(255, 255, 255);
+  font-size: x-small;
 }
