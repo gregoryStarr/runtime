@@ -1,0 +1,42 @@
+form {
+    display: flex;
+    padding: 6px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+form > input, button, textarea {
+    margin: 4px;
+    box-shadow: #000000b5 1px 1px 5px;
+    outline: none;
+    padding: 4px 6px 4px 6px;
+    background: #c3c3c3;
+    border-radius: 4px;
+  }
+
+input{
+  color: rgb(77, 77, 77);
+}
+
+  form >button {
+    border-radius: 12px;
+    background: #f3f3f3;
+    color: #101010;
+  }
+
+
+  form >button:hover {
+    border-radius: 12px;
+    background: #a0a0a0;
+    color: #ffffff;
+  }
+
+  textarea{
+    background: white
+  }
+
+  form > * {
+    outline: 0 transparent;
+  }

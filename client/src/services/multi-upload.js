@@ -1,30 +1,55 @@
-import { S3 } from 'aws-sdk';
+import AWS, { S3 } from "aws-sdk";
 
-export const MultiUploadService = (files, success, error) => {
+export const MultiUploadService = async (
+  uploadPath = "",
+  files = [],
+  success = null,
+  error = null
+) => {
 
-    const s3 = new S3({
-        accessKeyId: 'AKIAWPBTC5FEJ2K7JNHS',
-        secretAccessKey: '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',
-        region: 'US West'
+  const s3 = new S3({
+    credentials: {
+      accessKeyId: process.env.REACT_APP_AWS_ACCESS_ID,
+      secretAccessKey: process.env.REACT_APP_AWS_SECRET,
+    },
+    region: "us-west-2",
+    profile: "uswestAdmin",
+  });
+
+  const defaultResponseHandler = (response) => {
+    console.log(`DEFAULT RESPONSE MESSAGING: ${response}`);
+  };
+
+  if (!files || files.length < 1) {
+    error("Error: you need to provide an array of files");
+  }
+
+  if (success == null) {
+    success = defaultResponseHandler;
+  }
+
+  if (error == null) {
+    success = defaultResponseHandler;
+  }
+
+  // create the promises
+  const promises = files.map((file) => {
+    return s3
+      .upload({
+        Bucket: "photogammetry",
+        Key: `${uploadPath}/${file.name}`,
+        Body: file,
+      })
+      .promise();
+  });
+
+  // execute the promises
+  Promise.all(promises)
+    .then((data) => {
+      success(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      error(err);
     });
-
-    if (!files || files.length < 1) {
-        error('Error: you need to provide an array of files')
-    }
-
-    const promises = files.map(file => {
-        return s3.upload({
-            Bucket: 'my-bucket',
-            Key: file.name,
-            Body: file
-        }).promise();
-    });
-
-    Promise.all(promises).then(data => {
-        console.log(data);
-        success(data)
-    }).catch(err => {
-        console.error(err);
-        error(err)
-    });
-}
+};
