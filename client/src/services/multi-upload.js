@@ -3,8 +3,8 @@ import { S3 } from 'aws-sdk';
 export const MultiUploadService = (files, success, error) => {
 
     const s3 = new S3({
-        accessKeyId: 'AKIAWPBTC5FEJ2K7JNHS',
-        secretAccessKey: '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',
+        accessKeyId: '',
+        secretAccessKey: '/3b2+E4R2OBGlIkeDiP9prWqOw',
         region: 'US West'
     });
 
