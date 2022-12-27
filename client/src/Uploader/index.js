@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import { MultiUpload } from "./components/multi-upload";
-import { MultiUploadService } from "./services/multi-upload";
+import "./index.css";
+import { MultiUpload } from "../components/multi-upload";
+import { MultiUploadService } from "../services/multi-upload";
 
 const App = () => {
   // Flags
   const [UPLOAD_COMPLETE, setUploadComplete] = useState(false);
   const [IS_UPLOADING, setIsUploading] = useState(false);
   const [HAS_ERROR, setHasError] = useState(false);
-
 
   useEffect(()=>{},[])
 
@@ -78,11 +77,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        Convert your photos to 3  <hr />
-      </header>
-
+    <div >
       <div>
         <section className="upload-container">
           UPLOAD YOUR FILES

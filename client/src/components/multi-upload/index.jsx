@@ -38,7 +38,7 @@ export function MultiUpload({ onFiles }) {
   return (
     <form onSubmit={handleSubmit}>
       <Segment>
-        <FormInput
+        <input
           type="text"
           name="batchName"
           placeholder="Project Name"
@@ -47,14 +47,14 @@ export function MultiUpload({ onFiles }) {
             setProjectName(e.currentTarget.value)
           }}
         />
-        <TextArea
+        <textarea
           id="story"
           name="story"
           rows="5"
           cols="33"
           value={sanatize(getArrayFromFileList())}
         />
-        <FormInput
+        <input
           type="file"
           ref={fileInput}
           multiple
@@ -62,9 +62,9 @@ export function MultiUpload({ onFiles }) {
             setFiles(e.currentTarget.files);
           }}
         />
-        <Button animated onClick={handleSubmit}  type="submit" disabled={!files.length}>
+        <button onClick={handleSubmit}  type="submit" disabled={!files.length}>
           Submit
-        </Button>
+        </button>
       </Segment>
     </form>
   );

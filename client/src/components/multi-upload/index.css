@@ -7,27 +7,32 @@ form {
 }
 
 
-form > input, button, textarea {
-    margin: 4px;
-    box-shadow: #000000b5 1px 1px 5px;
-    outline: none;
-    padding: 4px 6px 4px 6px;
-    background: #c3c3c3;
-    border-radius: 4px;
+form input, button, textarea {
+  margin: 4px;
+  box-shadow: #000000b5 1px 1px 5px;
+  outline: none;
+  padding: 8px 6px 8px 6px;
+  background: #c3c3c3;
+  border-radius: 4px;
+  border: 1px solid black;
+  max-width: 100%;
+  width: 100%;
   }
 
-input{
-  color: rgb(77, 77, 77);
+form input{
+  color: rgb(86, 86, 86);
+  
 }
 
-  form >button {
+  form button {
+    margin-top: 10px;
     border-radius: 12px;
     background: #f3f3f3;
     color: #101010;
   }
 
 
-  form >button:hover {
+  form button:hover {
     border-radius: 12px;
     background: #a0a0a0;
     color: #ffffff;
