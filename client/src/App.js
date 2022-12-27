@@ -50,9 +50,15 @@ const App = () => {
 
   // instantiate the service
   const uploadService = (name, files) => {
-    if (!files || !files.length) {
+    if (!files || !files.length  ) {
       const error = new Error("files have not been set properly");
       setHasError(error);
+      return
+    }
+
+    if(!name){
+        setHasError('Please provide and project name')
+        return 
     }
 
     const uploadPath = name;
@@ -74,7 +80,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        Convert your photos to 3D  <hr />
+        Convert your photos to 3  <hr />
       </header>
 
       <div>
