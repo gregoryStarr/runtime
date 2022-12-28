@@ -6,7 +6,6 @@ import "semantic-ui-css/semantic.min.css";
 import { Provider } from "mobx-react";
 import { KanbanBoard } from "./components/KanbanBoard";
 import { TaskStore } from "./stores/TaskStore";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider taskStore={new TaskStore()}>
