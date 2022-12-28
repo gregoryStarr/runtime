@@ -2,5 +2,10 @@
   "trailingComma": "es5",
   "tabWidth": 4,
   "semi": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "dot-location": "off",
+  "new-parens": "off",
+  "no-whitespace-before-property": "off",
+  "rest-spread-spacing": "off",
+  "unicode-bom": "off"
 }
