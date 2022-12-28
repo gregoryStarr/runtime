@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./index.css";
+import "./index.scss";
 import { MultiUpload } from "../multi-upload";
 import { MultiUploadService } from "../../services/multi-upload";
 

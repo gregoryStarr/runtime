@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import "./index.css";
+import "./index.scss";
 import { Button, FormInput, Segment, TextArea } from "semantic-ui-react";
 export function MultiUpload({ onFiles }) {
   const fileInput = useRef(null);
