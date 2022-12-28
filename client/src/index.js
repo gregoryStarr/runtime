@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import Uploader from "./Uploader";
+import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-import 'semantic-ui-css/semantic.min.css'
-
+import "semantic-ui-css/semantic.min.css";
+import { Provider } from "mobx-react";
+import { KanbanBoard } from "./components/KanbanBoard";
+import { TaskStore } from "./stores/TaskStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <div className="App">
-    <Uploader/>
-  </div>
+  <Provider taskStore={new TaskStore()}>
+    <KanbanBoard />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
