@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./index.css";
-import { MultiUpload } from "../components/multi-upload";
-import { MultiUploadService } from "../services/multi-upload";
+import "./index.scss";
+import { MultiUpload } from "../multi-upload";
+import { MultiUploadService } from "../../services/multi-upload";
 
 const App = () => {
   // Flags
