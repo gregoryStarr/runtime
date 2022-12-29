@@ -1,15 +1,15 @@
-import React from "react";
+import { Provider } from "mobx-react";
 import ReactDOM from "react-dom/client";
+import "semantic-ui-css/semantic.min.css";
+import { App } from './App';
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-import "semantic-ui-css/semantic.min.css";
-import { Provider } from "mobx-react";
-import { KanbanBoard } from "./components/KanbanBoard";
 import { TaskStore } from "./stores/TaskStore";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider taskStore={new TaskStore()}>
-    <KanbanBoard />
+    <App />
   </Provider>
 );
 
