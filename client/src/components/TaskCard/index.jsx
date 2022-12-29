@@ -22,8 +22,8 @@ const TaskCard = observer(({ task, index }) => {
             }}
           >
             {task.name}
-          </a>
-          <h5>ID:{task.id}</h5>
+          </a>  
+          <h6>ID:{task.id}</h6>
         </div>
       )}
     </Draggable>
