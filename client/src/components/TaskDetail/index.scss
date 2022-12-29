@@ -1,0 +1,19 @@
+.task-detail {
+    border: solid 1px #aaaaaa;
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    background: linear-gradient(357deg, #615b5b, #eaeaea 536px);
+    z-index: 1;
+    margin-top: 100px;
+    height: fit-content;
+    padding: 10px;
+    box-shadow: 5px 9px 20px 6px black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
