@@ -3,7 +3,7 @@ import { CRUD } from "../services/CRUD";
 import { Task } from "../structures/Task";
 class TaskStore {
   constructor() {
-    makeAutoObservable(this);
+   
     this.tasks = [
       new Task({
         id: 1,
@@ -45,9 +45,14 @@ class TaskStore {
         difficutly: "easy",
       }),
     ];
+    
     this.error = "";
     this.taskService = new CRUD();
     this.selectedTask = null;
+    this.debugOut = 'No output'
+
+
+    makeAutoObservable(this);
   }
 
   getTasks = async () => {
@@ -120,6 +125,15 @@ class TaskStore {
   doneTasks = () => {
     return this.tasks.filter((task) => task.status === "done");
   };
+
+  selectTask = (task) => {
+    this.selectedTask = task;
+  }
+
+  clearSelectedTask = () => {
+    this.selectedTask = null
+  }
+
 }
 
 export { TaskStore };
