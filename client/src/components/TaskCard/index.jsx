@@ -22,7 +22,7 @@ const TaskCard = observer(({ task, index }) => {
             }}
           >
             {task.name}
-          </a>  
+          </a>
           <h6>ID:{task.id}</h6>
         </div>
       )}

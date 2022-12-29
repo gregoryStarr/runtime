@@ -6,7 +6,6 @@ export const MultiUploadService = async (
   success = null,
   error = null
 ) => {
-
   const s3 = new S3({
     credentials: {
       accessKeyId: process.env.REACT_APP_AWS_ACCESS_ID,

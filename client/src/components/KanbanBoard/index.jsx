@@ -4,7 +4,7 @@ import { useMemo, useContext } from "react";
 import TaskStoreContext from "../../stores/TaskStoreContext";
 import { KanbanColumn } from "../KanbanColumn";
 import "./index.scss";
-import bkgImg from './filigree.png'
+import bkgImg from "./filigree.png";
 const KanbanBoard = observer(() => {
   const taskStore = useContext(TaskStoreContext);
   const onDragEnd = (result) => {

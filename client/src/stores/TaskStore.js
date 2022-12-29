@@ -4,7 +4,6 @@ import { Task } from "../structures/Task";
 import uuid from "react-uuid";
 class TaskStore {
   constructor() {
-   
     this.tasks = [
       new Task({
         id: uuid(),
@@ -46,12 +45,11 @@ class TaskStore {
         difficutly: "easy",
       }),
     ];
-    
+
     this.error = "";
     this.taskService = new CRUD();
     this.selectedTask = null;
-    this.debugOut = 'No output'
-
+    this.debugOut = "No output";
 
     makeAutoObservable(this);
   }
@@ -129,12 +127,11 @@ class TaskStore {
 
   selectTask = (task) => {
     this.selectedTask = task;
-  }
+  };
 
   clearSelectedTask = () => {
-    this.selectedTask = null
-  }
-
+    this.selectedTask = null;
+  };
 }
 
 export { TaskStore };

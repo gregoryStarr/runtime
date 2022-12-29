@@ -15,10 +15,9 @@ class Task {
     duration = "",
     difficutly = "",
     description = "",
-    assignedTo = ""
+    assignedTo = "",
   }) {
-  
-    this.id = id  || uuid();
+    this.id = id || uuid();
     this.name = name;
     this.status = status;
     this.notes = notes;

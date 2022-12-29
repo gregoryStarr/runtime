@@ -6,9 +6,8 @@ export function MultiUpload({ onFiles }) {
   const nameInput = useRef(null);
   const [files, setFiles] = useState([]);
   const [projectName, setProjectName] = useState("");
- 
-  const ref = React.createRef();;
 
+  const ref = React.createRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +33,6 @@ export function MultiUpload({ onFiles }) {
     return listString.replace(",", "");
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
       <Segment>
@@ -43,8 +41,8 @@ export function MultiUpload({ onFiles }) {
           name="batchName"
           placeholder="Project Name"
           ref={nameInput}
-          onChange={ (e)=> {
-            setProjectName(e.currentTarget.value)
+          onChange={(e) => {
+            setProjectName(e.currentTarget.value);
           }}
         />
         <textarea
@@ -58,11 +56,11 @@ export function MultiUpload({ onFiles }) {
           type="file"
           ref={fileInput}
           multiple
-          onChange={ (e)=>{
+          onChange={(e) => {
             setFiles(e.currentTarget.files);
           }}
         />
-        <button onClick={handleSubmit}  type="submit" disabled={!files.length}>
+        <button onClick={handleSubmit} type="submit" disabled={!files.length}>
           Submit
         </button>
       </Segment>

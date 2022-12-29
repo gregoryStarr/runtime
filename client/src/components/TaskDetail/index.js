@@ -41,8 +41,8 @@ const TaskDetail = observer((props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTask = new Task("", "", "", "", "", "", "", "", "", "");
-    const fields = document.querySelectorAll('input')
-    const fieldsArr = Array.from(fields)
+    const fields = document.querySelectorAll("input");
+    const fieldsArr = Array.from(fields);
     fieldsArr.map((field, index) => {
       if (field.id) {
         newTask[field.id] = field.value;
@@ -78,9 +78,8 @@ const TaskDetail = observer((props) => {
           </Form.Field>
           <Form.Field>
             <section>
-            <Icon name="pencil alternate" />
+              <Icon name="pencil alternate" />
               <label>Author</label>
-              
             </section>
             <Input
               placeholder="Author"
@@ -93,9 +92,8 @@ const TaskDetail = observer((props) => {
           </Form.Field>
           <Form.Field>
             <section>
-            <Icon name="bullseye" />
+              <Icon name="bullseye" />
               <label>Description</label>
-             
             </section>
             <Input
               placeholder="Description"
