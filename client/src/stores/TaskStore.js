@@ -1,12 +1,12 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { CRUD } from "../services/CRUD";
 import { Task } from "../structures/Task";
+import uuid from "react-uuid";
 class TaskStore {
   constructor() {
-   
     this.tasks = [
       new Task({
-        id: 1,
+        id: uuid(),
         name: "Greg'S Task 1",
         status: "todo",
         notes: [],
@@ -19,7 +19,7 @@ class TaskStore {
         difficutly: "easy",
       }),
       new Task({
-        id: 2,
+        id: uuid(),
         name: "Mom's Task 2",
         status: "in progress",
         notes: [],
@@ -32,7 +32,7 @@ class TaskStore {
         difficutly: "easy",
       }),
       new Task({
-        id: 3,
+        id: uuid(),
         name: "Harry's Task 3",
         status: "done",
         notes: [],
@@ -45,12 +45,11 @@ class TaskStore {
         difficutly: "easy",
       }),
     ];
-    
+
     this.error = "";
     this.taskService = new CRUD();
     this.selectedTask = null;
-    this.debugOut = 'No output'
-
+    this.debugOut = "No output";
 
     makeAutoObservable(this);
   }
@@ -128,12 +127,11 @@ class TaskStore {
 
   selectTask = (task) => {
     this.selectedTask = task;
-  }
+  };
 
   clearSelectedTask = () => {
-    this.selectedTask = null
-  }
-
+    this.selectedTask = null;
+  };
 }
 
 export { TaskStore };

@@ -24,7 +24,7 @@ const App = observer(() => {
       <KanbanBoard />
       {taskStore.selectedTask && (
         <div className="modal">
-          <TaskDetail task={taskStore.selectedTask} />
+          <TaskDetail task={taskStore.selectedTask} taskStore={taskStore} />
         </div>
       )}
     </div>

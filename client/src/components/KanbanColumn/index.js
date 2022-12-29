@@ -10,10 +10,9 @@ const KanbanColumn = observer(({ status, tasks }) => (
         ref={provided.innerRef}
         {...provided.droppableProps}
       >
-        <h2>{status.toUpperCase()}
-        <i>
-          {tasks.filter((task) => task.status === status).length}
-        </i>
+        <h2>
+          {status.toUpperCase()}
+          <i>{tasks.filter((task) => task.status === status).length}</i>
         </h2>
         {tasks
           .filter((task) => task.status === status)

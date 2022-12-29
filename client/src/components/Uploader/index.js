@@ -9,7 +9,7 @@ const App = () => {
   const [IS_UPLOADING, setIsUploading] = useState(false);
   const [HAS_ERROR, setHasError] = useState(false);
 
-  useEffect(()=>{},[])
+  useEffect(() => {}, []);
 
   // Handlers
   function onFilesHandler(batchName, files) {
@@ -34,11 +34,10 @@ const App = () => {
     setIsUploading(true);
   }
 
-
   const onBatchUploadSuccess = (data) => {
     setIsUploading(false);
     setUploadComplete(true);
-    setHasError(false)
+    setHasError(false);
     console.log(`from batch success handler: ${JSON.stringify(data)}`);
   };
 
@@ -49,21 +48,21 @@ const App = () => {
 
   // instantiate the service
   const uploadService = (name, files) => {
-    if (!files || !files.length  ) {
+    if (!files || !files.length) {
       const error = new Error("files have not been set properly");
       setHasError(error);
-      return
+      return;
     }
 
-    if(!name){
-        setHasError('Please provide and project name')
-        return 
+    if (!name) {
+      setHasError("Please provide and project name");
+      return;
     }
 
     const uploadPath = name;
     setIsUploading(true);
     try {
-       MultiUploadService(
+      MultiUploadService(
         uploadPath,
         files,
         onBatchUploadSuccess,
@@ -72,17 +71,19 @@ const App = () => {
     } catch (error) {
       setHasError(error);
       setIsUploading(false);
-      setUploadComplete(false)
+      setUploadComplete(false);
     }
   };
 
   return (
-    <div >
+    <div>
       <div>
         <section className="upload-container">
           UPLOAD YOUR FILES
           <MultiUpload onFiles={onFilesHandler} />
-          {!UPLOAD_COMPLETE && !HAS_ERROR && IS_UPLOADING &&
+          {!UPLOAD_COMPLETE &&
+            !HAS_ERROR &&
+            IS_UPLOADING &&
             `{$Files.length} files have been selected, now uploading`}
           {HAS_ERROR && <div className="error">{HAS_ERROR}</div>}
           {UPLOAD_COMPLETE && <div className="success">Upload Complete</div>}

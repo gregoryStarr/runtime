@@ -5,11 +5,14 @@
   padding: 10px;
   background: linear-gradient(45deg, black, transparent);
 
-
   > h2 {
-    background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.4901960784), rgba(79, 53, 32, 0.3607843137) 30px);
+    background: repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4901960784),
+      rgba(79, 53, 32, 0.3607843137) 48px
+    );
     padding: 0 4px 4px 4px;
-    text-shadow: -1px 0 5px white;
+    text-shadow: 1px 1px 1px #ffffff61;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     font-size: medium;
