@@ -6,7 +6,9 @@ import {TaskStoreContext} from "stores/TaskStoreContext";
 import { observer } from "mobx-react-lite";
 import { action } from "mobx";
 import {AppMenu} from 'components/AppMenu'
+
 import "./App.scss";
+import { NoteBoard } from "components/NoteBoard";
 
 const App = observer(() => {
   const taskStore = useContext(TaskStoreContext);
@@ -16,6 +18,7 @@ const App = observer(() => {
   return (
     <div className="app">
       <AppMenu />
+      <NoteBoard />
       <KanbanBoard/>
       {taskStore.CURRENTTASK && (
         <div className="modal">

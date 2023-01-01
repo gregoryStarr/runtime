@@ -1,0 +1,10 @@
+.note-board{
+    display: flex;
+    flex-direction: row !important;
+    flex-flow: wrap;
+    //background: rgba(255, 0, 0, 0.478);
+    height: 100%;
+    margin: 10px 0 10px 0;
+    overflow: scroll;
+    padding: 20px;
+}

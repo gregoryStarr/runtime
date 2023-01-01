@@ -4,19 +4,12 @@ import { Form, Button, Input, Checkbox, Label, Icon, ButtonGroup } from "semanti
 import { action } from "mobx";
 import { TaskStoreContext } from "stores/TaskStoreContext";
 import './index.scss'
+import { removeObjectWithId } from "utils/helpers";
 const TaskDetail = observer( ( )=> {
   const taskStore = useContext(TaskStoreContext);
   const task = taskStore.selectedTask;
   const [showConfirm, setShowConfirm] = useState(false)
-  function removeObjectWithId(arr, id) {
-    // Making a copy with the Array from() method
-    const arrCopy = Array.from(arr);
-
-    const objWithIdIndex = arrCopy.findIndex((obj) => obj.name === id);
-    arrCopy.splice(objWithIdIndex, 1);
-    return arrCopy;
-  }
-
+  
   const setTask = action((newTask) => {
     //taskStore.tasks.filter( (t)=> t.name === taskStore.selectedTask.name)[0] = newTask;
     const newTasks = removeObjectWithId(taskStore.tasks, task.name);
@@ -139,7 +132,7 @@ const TaskDetail = observer( ( )=> {
           <div>
             <p>Confirm Delete?</p>
             <ButtonGroup>
-                <Button color="red" onClick={ action( () => taskStore.removeTask(taskStore.CURRENTTASK) )}>Confirm Deletion</Button>
+                <Button color="red" onClick={ action( () => {taskStore.deleteTask(taskStore.CURRENTTASK);taskStore.clearCurrentTask()} )}>Confirm Deletion</Button>
                 <Button onClick={() => setShowConfirm(false) }>Cancel</Button>
             </ButtonGroup>
           </div>

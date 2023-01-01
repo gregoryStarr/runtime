@@ -2,15 +2,18 @@ import { makeObservable, computed, reaction, observable, runInAction } from "mob
 import { CRUD } from "../services/CRUD";
 import { Task } from "../structures/Task";
 import uuid from "react-uuid";
+import DEFAULTDATA from 'data/tasks.json'
 class TaskStore {
   CURRENTTASK = null;
   tasks=[];
   modalIsShown=false
+  DefaultTasks=DEFAULTDATA
   constructor() {
     makeObservable(this, {
       tasks:observable,
       modalIsShown:observable,
-      CURRENTTASK:observable
+      CURRENTTASK:observable,
+      DefaultTasks:observable
     });
     this.tasks = [
       new Task({
@@ -41,6 +44,12 @@ class TaskStore {
       }),
      
     ];
+
+    this.getDefaultData = ()=>{
+
+      this.DefaultTasks.map((t)=> { this.addTask(t)})
+      return this.tasks;
+    }
     
     
     this.showModal = (value) => {
@@ -53,21 +62,28 @@ class TaskStore {
     // this.debugOut = "No output";
 
     // ##################################################
-    this.addTask = () => {
-      const task = new Task({
-        id: uuid(),
-        name: "New Task",
-        status: "todo",
-        notes: [],
-        image: null,
-        attachments: [],
-        author: "System Created",
-        dueDate: null,
-        startDate: Date.now(),
-        duration: null,
-        difficutly: "easy",
-      })
-
+    this.addTask = (t=null) => {
+      console.log(t)
+      let task = t;
+      if(task===null){
+        task = new Task({
+          id: uuid(),
+          name: "New Task",
+          status: "todo",
+          notes: [],
+          image: null,
+          attachments: [],
+          author: "System Created",
+          dueDate: null,
+          startDate: Date.now(),
+          duration: null,
+          difficutly: "easy",
+          description:'How to do a forced-push to another branch in Githttps://stackoverflow.com › questions › how-to-do-a-fo... Apr 29, 2016 — This answer is about the use of the + force-push character, not about force-pushing in general. Just to be a bit more complete than the accepted ... 2 answers · Top answer: The + needs to come at the beginning of the argument representing the couple. git push ... Push commits to another branch - git - Stack Overflow Dec 16, 2012 Force "git push" to overwrite remote files - Stack Overflow May 9, 2012 Push to another branch with git - Stack Overflow Jul 13, 2017 git - Can I force-push on a branch which only I work on? Jun 8, 2022 More results from stackoverflow.com '
+        })
+      }else{
+        task = new Task(task)
+      }
+      task.id = uuid()
       this.tasks.push(task);
       return task;
     }
@@ -77,7 +93,18 @@ class TaskStore {
       this.currentTask = null;
     };
 
-    this.currentTask = this.tasks[0]
+    
+    this.deleteTask = (targetTask) => {
+      try {
+        const newTasks = this.tasks.filter((task) => task.id !== targetTask.id)
+        this.tasks = newTasks;
+        return this.tasks;
+      } catch (e) {
+        this.error = "Encountered an error"
+      }
+    };
+
+    
   }
 
 
