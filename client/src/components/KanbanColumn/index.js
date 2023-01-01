@@ -10,9 +10,9 @@ const KanbanColumn = observer(({ status, tasks }) => (
         </h2>
  <Droppable droppableId={status}>
    {(provided, snapshot) => (
-      <div
-        
-        ref={provided.innerRef}
+      <div 
+      className="droppable-column"
+      ref={provided.innerRef}
         {...provided.droppableProps}
       >
         {tasks

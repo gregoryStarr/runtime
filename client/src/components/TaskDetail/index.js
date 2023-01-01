@@ -22,16 +22,12 @@ const TaskDetail = observer( ( )=> {
   const handleSubmit = action((e) => {
     e.preventDefault();
     const newTask = {...taskStore.CURRENTTASK}
-    const newTasks = removeObjectWithId(taskStore.tasks, taskStore.CURRENTTASK.name);
+    const newTasks = removeObjectWithId(taskStore.tasks, taskStore.CURRENTTASK.id);
     newTasks.push(newTask);
     taskStore.clearCurrentTask();
     taskStore.tasks = newTasks;
     console.log(JSON.stringify(taskStore.tasks[1]));
   });
-
-  const showConfirmDelete = () => {
-
-  }
 
   return (
   <div>
