@@ -9,7 +9,7 @@ const AppMenu = observer((props)=>{
     const taskStore = useContext(TaskStoreContext);
    return (
     <div className="menu-container">
-        <Menu className="app-menu">
+        <Menu className="app-menu" color="black" inverted>
             <Menu.Item>
                 <Button  onClick={ action( (e) => { 
                     const task = taskStore.addTask(); 
