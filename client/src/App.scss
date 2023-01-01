@@ -1,7 +1,15 @@
 .app {
     display: flex;
+    overflow-y: none;
     flex-direction: column;
-
+    background-image: url(https://cdn.discordapp.com/attachments/1012691893865414670/1058327246659649627/gstarrltd_lightning_storm_at_night_outside_a_large_city_wide_an_eac397e5-d962-4302-9f06-6001ef0ca252.png);
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    background-position: 0 -400px;
+    height: 100vh;
+    /* background: red; */
+    width: 100vw;
+    justify-content: space-between;
     .debug {
         position: absolute;
         bottom: 0;
@@ -18,9 +26,34 @@
         overflow-y: scroll;
     }
 
+    .light-menu-grad {
+        background-image: linear-gradient(
+            174deg,
+            rgba(0, 0, 0, 0.7490196078) 0%,
+            rgba(0, 0, 0, 0) 25%,
+            rgba(34, 34, 34, 0.8) 100%
+        ) !important;
+        mix-blend-mode: screen;
+    }
+
+    .menuContainer {
+        display: flex;
+        justify-content: space-between;
+        .ui.menu {
+            width: 100%;
+            margin: 20px;
+            box-shadow: -1px 5px 20px 0px black;
+        }
+    }
+
     .modal {
+        z-index: 1;
         position: absolute;
         width: 100vw;
+        top: 0;
+        bottom: 0;
+        background: #000000a8;
+        height: 100%;
         .task-detail {
             border: solid 1px #aaaaaa;
             position: relative;
@@ -29,16 +62,19 @@
             margin: auto;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-items: flex-start;
+            justify-content: flex-start;
+            align-items: center;
             background: linear-gradient(357deg, #615b5b, #eaeaea 536px);
             z-index: 1;
             margin-top: 100px;
+            height: -moz-fit-content;
             height: fit-content;
             padding: 10px;
             box-shadow: 5px 9px 20px 6px black;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
+            flex-direction: column;
+            align-content: space-around;
         }
     }
 }

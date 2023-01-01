@@ -2,10 +2,9 @@
   background-image: linear-gradient(222deg, rgba(0, 0, 0, 0.5), rgba(0, 221, 255, 0.396), rgb(255, 255, 255) 768px);
   padding: 4px;
   border-radius: 4px;
-  border-radius: 4px;
   border: 1px dashed rgba(84, 84, 84, 0.2784313725);
   box-shadow: 3px 3px 5px black;
-  max-height: 400px;
+  
   margin-top: 8px;
   text-shadow: 1px 1px 1px rgb(175 172 172);
   color: #000000;
@@ -18,17 +17,19 @@
     color: inherit;
     cursor: pointer !important;
     display: flex;
-    font-size: larger;
-    /* background: red; */
+    font-size: 16px;
+    font-weight: 700;;
     padding: 4px 0 0 0;
     justify-content: space-between;
     text-transform: capitalize;
   }
 
   &:hover {
-    background-image: linear-gradient(222deg, rgba(0, 0, 0, 0.5), rgba(0, 221, 255, 0.252), rgb(255, 255, 255) 768px);
+    background-image: linear-gradient(222deg, #bbadad, #d8cdb3 768px);
     text-shadow: 1px 1px 1px rgb(249 241 241);
     color: black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px black;
   }
 
   h6 {
@@ -38,12 +39,19 @@
 
 .gradient {
   position: relative;
-  min-height: 80px;
+
   background-image: repeating-linear-gradient(360deg, rgb(114 114 114 / 98%), #9d9d9d 45px);
   text-shadow: 5px -1px -3px #ffffff;
   z-index: 1;
+  
+  &:hover{
+    box-shadow: inset 0px 0px 12px 1px white;background-image: linear-gradient(222deg, #bbadad, #d8cdb3 768px);
+  text-shadow: 1px 1px 1px rgb(249 241 241);
+  color: black;
+  border-radius: 5px;
+  box-shadow: 1px 1px 20px black;
+  }
 }
-
 .gradient::before {
   position: absolute;
   content: "";
@@ -58,4 +66,9 @@
 }
 .gradient:hover::before {
   opacity: 1;
+  background-image: linear-gradient(222deg, #bbadad, #d8cdb3 768px);
+  text-shadow: 1px 1px 1px rgb(249 241 241);
+  color: black;
+  border-radius: 5px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.583);
 }
