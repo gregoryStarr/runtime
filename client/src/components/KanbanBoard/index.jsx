@@ -1,10 +1,12 @@
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useMemo, useContext } from "react";
-import TaskStoreContext from "../../stores/TaskStoreContext";
+import {TaskStoreContext} from "../../stores/TaskStoreContext";
 import { KanbanColumn } from "../KanbanColumn";
 import "./index.scss";
-import bkgImg from "./filigree.png";
+import bkgImg from "./filigree.png";;
+
+
 const KanbanBoard = observer(() => {
   const taskStore = useContext(TaskStoreContext);
   const onDragEnd = (result) => {
@@ -41,9 +43,11 @@ const KanbanBoard = observer(() => {
   );
 
   return (
+    <>
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="kanban-board">{columns}</div>
     </DragDropContext>
+    </>
   );
 });
 

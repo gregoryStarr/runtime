@@ -14,17 +14,7 @@
   height: fit-content;
   padding: 10px;
   box-shadow: 5px 9px 20px 6px black;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-
-  &::before {
-    content: "Read this -";
-    background-color: yellow;
-    color: red;
-    font-weight: bold;
-    width: 100vh;
-    height: 100vh;
-  }
+  border-radius: 5px;
 
   section {
     display: flex;

@@ -5,6 +5,10 @@
   padding: 10px;
   background: linear-gradient(45deg, black, transparent);
 
+  > div {
+    overflow-y: scroll;
+    height: 333px;
+  }
   > h2 {
     background: repeating-linear-gradient(194deg, rgba(255, 255, 255, 0.4901960784), rgb(255 255 255 / 76%) 69px);
     padding: 0 4px 4px 4px;

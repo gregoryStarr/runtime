@@ -1,9 +1,17 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeObservable, computed, reaction, observable, runInAction } from "mobx";
 import { CRUD } from "../services/CRUD";
 import { Task } from "../structures/Task";
 import uuid from "react-uuid";
 class TaskStore {
+  CURRENTTASK = null;
+  tasks=[];
+  modalIsShown=false
   constructor() {
+    makeObservable(this, {
+      tasks:observable,
+      modalIsShown:observable,
+      CURRENTTASK:observable
+    });
     this.tasks = [
       new Task({
         id: uuid(),
@@ -31,10 +39,25 @@ class TaskStore {
         duration: null,
         difficutly: "easy",
       }),
-      new Task({
+     
+    ];
+    
+    
+    this.showModal = (value) => {
+      this.modalIsShown = value
+    }
+    
+    // this.error = "";
+    // this.taskService = new CRUD();
+    // this.selectedTask = null;
+    // this.debugOut = "No output";
+
+    // ##################################################
+    this.addTask = () => {
+      const task = new Task({
         id: uuid(),
-        name: "Harry's Task 3",
-        status: "done",
+        name: "New Task",
+        status: "todo",
         notes: [],
         image: null,
         attachments: [],
@@ -43,15 +66,30 @@ class TaskStore {
         startDate: Date.now(),
         duration: null,
         difficutly: "easy",
-      }),
-    ];
+      })
 
-    this.error = "";
-    this.taskService = new CRUD();
-    this.selectedTask = null;
-    this.debugOut = "No output";
+      this.tasks.push(task);
+      return task;
+    }
 
-    makeAutoObservable(this);
+  
+    this.clearCurrentTask = () => {
+      this.currentTask = null;
+    };
+
+    this.currentTask = this.tasks[0]
+  }
+
+
+  // ######################
+  // Getter Setters
+
+  get currentTask(){
+    return this.SELECTEDTASK
+  }
+
+  set currentTask(t){
+    this.CURRENTTASK=t;
   }
 
   getTasks = async () => {
@@ -67,51 +105,38 @@ class TaskStore {
     }
   };
 
-  addTask = async (task) => {
-    try {
-      // const projects = await fetchGithubProjectsSomehow();
-      // const filteredProjects = somePreprocessing(projects);
-      runInAction(async () => {
-        const newTask = await this.taskService.addTask(task);
-        this.tasks.push(newTask);
-      });
-    } catch (e) {
-      runInAction(() => {
-        this.error = "error";
-      });
-    }
-  };
+  
 
-  updateTask = async (taskId, task) => {
-    try {
-      // const projects = await fetchGithubProjectsSomehow();
-      // const filteredProjects = somePreprocessing(projects);
-      runInAction(async () => {
-        await this.taskService.updateTask(taskId, task);
-        const taskIndex = this.tasks.findIndex((task) => task.id === taskId);
-        this.tasks[taskIndex] = task;
-      });
-    } catch (e) {
-      runInAction(() => {
-        this.error = "error";
-      });
-    }
-  };
+  // updateTask = async (taskId, task) => {
+  //   try {
+  //     // const projects = await fetchGithubProjectsSomehow();
+  //     // const filteredProjects = somePreprocessing(projects);
+  //     runInAction(async () => {
+  //       await this.taskService.updateTask(taskId, task);
+  //       const taskIndex = this.tasks.findIndex((task) => task.id === taskId);
+  //       this.tasks[taskIndex] = task;
+  //     });
+  //   } catch (e) {
+  //     runInAction(() => {
+  //       this.error = "error";
+  //     });
+  //   }
+  // };
 
-  deleteTask = async (taskId) => {
-    try {
-      // const projects = await fetchGithubProjectsSomehow();
-      // const filteredProjects = somePreprocessing(projects);
-      runInAction(async () => {
-        await this.taskService.deleteTask(taskId);
-        this.tasks = this.tasks.filter((task) => task.id !== taskId);
-      });
-    } catch (e) {
-      runInAction(() => {
-        this.error = "error";
-      });
-    }
-  };
+  // deleteTask = async (taskId) => {
+  //   try {
+  //     // const projects = await fetchGithubProjectsSomehow();
+  //     // const filteredProjects = somePreprocessing(projects);
+  //     runInAction(async () => {
+  //       await this.taskService.deleteTask(taskId);
+  //       this.tasks = this.tasks.filter((task) => task.id !== taskId);
+  //     });
+  //   } catch (e) {
+  //     runInAction(() => {
+  //       this.error = "error";
+  //     });
+  //   }
+  // };
 
   todoTasks = () => {
     return this.tasks.filter((task) => task.status === "todo");
@@ -125,13 +150,10 @@ class TaskStore {
     return this.tasks.filter((task) => task.status === "done");
   };
 
-  selectTask = (task) => {
-    this.selectedTask = task;
-  };
 
-  clearSelectedTask = () => {
-    this.selectedTask = null;
-  };
+
+  
+  
 }
 
 export { TaskStore };
