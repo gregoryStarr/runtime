@@ -7,8 +7,11 @@
   box-shadow: 1px 1px 8px black;
 
   > div {
-    overflow-y: scroll;
-    height: 333px;
+      overflow-y: scroll;
+      max-height: 333px;
+
+      height: 100%;
+      padding: 0 0 0 10px;
   }
   > h2 {
     background: repeating-linear-gradient(194deg, rgba(255, 255, 255, 0.4901960784), rgb(255 255 255 / 76%) 69px);
@@ -28,5 +31,6 @@
     font-weight: 900;
     font-size: 16px;
     box-shadow: 0px 3px 5px 0px;
+    margin-bottom:0;
   }
 }
