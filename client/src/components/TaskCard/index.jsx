@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import { observer } from "mobx-react-lite";
 import { Draggable } from "react-beautiful-dnd";
 import "./index.scss";
@@ -7,16 +8,17 @@ import {TaskStoreContext} from "stores/TaskStoreContext";import { action } from 
 
 const TaskCard = observer(({ task, index }) => {
   const taskStore = useContext(TaskStoreContext);
-  
+  const [selected, setSelected] = useState(task.selected)
   return (
     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
       {(provided, snapshot) => (
         <div
-        onClick={action(() => {
-          taskStore.currentTask=task;
+          onClick={action(() => {
+          task.selected=(!task.selected)
+          taskStore.CURRENTTASK=task;
           taskStore.showModal(true)
         })}
-          className="kanban-task gradient"
+          className={`kanban-task gradient ${selected && 'selected'}`}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -24,7 +26,7 @@ const TaskCard = observer(({ task, index }) => {
           <a>
             {task.name}
           </a>
-          <h6>ID:{task.id}</h6>
+          <h6>Status:{`${task.status}`}</h6>
         </div>
       )}
     </Draggable>
