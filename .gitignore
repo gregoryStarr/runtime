@@ -6,3 +6,4 @@ automation/
 host/
 .zip
 dist/
+*.zip
