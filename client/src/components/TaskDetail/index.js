@@ -5,9 +5,10 @@ import { action } from "mobx";
 import { TaskStoreContext } from "stores/TaskStoreContext";
 import './index.scss'
 import { removeObjectWithId } from "utils/helpers";
-const TaskDetail = observer( ( )=> {
-  const taskStore = useContext(TaskStoreContext);
-  const task = taskStore.selectedTask;
+const TaskDetail = observer( (props )=> {
+  const taskStore = props.taskStore || useContext(TaskStoreContext);
+  const [task, setLocalTask] = useState(taskStore.CURRENTTASK);
+  
   const [showConfirm, setShowConfirm] = useState(false)
   
   const setTask = action((newTask) => {
@@ -53,8 +54,9 @@ const TaskDetail = observer( ( )=> {
             id="name"
             onChange={action((e) => {
                 taskStore.CURRENTTASK.name=e.currentTarget.value;
+                setLocalTask({...taskStore.CURRENTTASK})
             })}
-            value={taskStore.CURRENTTASK.name}
+            value={taskStore?.CURRENTTASK?.name}
           />
         </Form.Field>
         <Form.Field>
@@ -65,10 +67,11 @@ const TaskDetail = observer( ( )=> {
           <Input
             placeholder="Author"
             id="author"
-            onChange={(e) => {
-              // task.author=e.currentTarget.value;
-            }}
-            // value={task.author}
+            onChange={action((e) => {
+              taskStore.CURRENTTASK.author = e.currentTarget.value
+              setLocalTask({...taskStore.CURRENTTASK})
+            })}
+            value={taskStore?.CURRENTTASK?.author}
           />
         </Form.Field>
         <Form.Field>
@@ -79,10 +82,11 @@ const TaskDetail = observer( ( )=> {
           <Input
             placeholder="Description"
             id="description"
-            onChange={(e) => {
-              // task.description=e.currentTarget.value;
-            }}
-            // value={task.description}
+            onChange={action((e) => {
+              taskStore.CURRENTTASK.description = e.currentTarget.value
+              setLocalTask({...taskStore.CURRENTTASK})
+            })}
+            value={taskStore?.CURRENTTASK?.description}
           />
         </Form.Field>
         <Form.Field>
@@ -93,10 +97,11 @@ const TaskDetail = observer( ( )=> {
           <Input
             placeholder="Difficulty"
             id="difficulty"
-            onChange={(e) => {
-              // task.difficulty=e.currentTarget.value;
-            }}
-            // value={task.difficutly}
+            onChange={action((e) => {
+              taskStore.CURRENTTASK.difficulty = e.currentTarget.value
+              setLocalTask({...taskStore.CURRENTTASK})
+            })}
+            value={taskStore?.CURRENTTASK?.difficutly}
           />
         </Form.Field>
         <Form.Field>
@@ -110,12 +115,10 @@ const TaskDetail = observer( ( )=> {
             onChange={action((e) => {
                 taskStore.CURRENTTASK.status=e.currentTarget.value;
             })}
-            value={taskStore?.CURRENTTASK?.status || 'not set'}
+            value={taskStore?.CURRENTTASK?.status || ''}
           />
         </Form.Field>
-        <Form.Field>
-          <Checkbox label="Assign to self" />
-        </Form.Field>
+       
        <ButtonGroup>
        <Button type="submit">Submit</Button>
         <Button color="red" onClick={() => setShowConfirm(true) }>Delete</Button>

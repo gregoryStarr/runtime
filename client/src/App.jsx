@@ -9,6 +9,7 @@ import {AppMenu} from 'components/AppMenu'
 
 import "./App.scss";
 import { NoteBoard } from "components/NoteBoard";
+import Greeting from "components/Greetings";
 
 const App = observer(() => {
   const taskStore = useContext(TaskStoreContext);
@@ -25,7 +26,10 @@ const App = observer(() => {
           <TaskDetail />
         </div>
       )}
+
+      {taskStore.CURRENTUSER===null && <Greeting />}
     </div>
+    
   );
 });
 

@@ -1,49 +1,30 @@
 import { makeObservable, computed, reaction, observable, runInAction } from "mobx";
 import { CRUD } from "../services/CRUD";
 import { Task } from "../structures/Task";
+import { User } from "../structures/User";
 import uuid from "react-uuid";
 import DEFAULTDATA from 'data/tasks.json'
 class TaskStore {
   CURRENTTASK = null;
+  CURRENTUSER =null;
   tasks=[];
   modalIsShown=false
   DefaultTasks=DEFAULTDATA
+  users:[];
   constructor() {
     makeObservable(this, {
       tasks:observable,
       modalIsShown:observable,
       CURRENTTASK:observable,
-      DefaultTasks:observable
+      CURRENTUSER:observable,
+      DefaultTasks:observable,
     });
-    this.tasks = [
-      new Task({
-        id: uuid(),
-        name: "Greg'S Task 1",
-        status: "todo",
-        notes: [],
-        image: null,
-        attachments: [],
-        author: "System Created",
-        dueDate: null,
-        startDate: Date.now(),
-        duration: null,
-        difficutly: "easy",
-      }),
-      new Task({
-        id: uuid(),
-        name: "Mom's Task 2",
-        status: "in progress",
-        notes: [],
-        image: null,
-        attachments: [],
-        author: "System Created",
-        dueDate: null,
-        startDate: Date.now(),
-        duration: null,
-        difficutly: "easy",
-      }),
-     
-    ];
+    this.tasks = [];
+
+    this.users = [
+      new User({firstName:'Greg', role:'2'}),
+      new User({firstName:'Admin', role:'3'})
+    ]
 
     this.getDefaultData = ()=>{
 
@@ -73,7 +54,7 @@ class TaskStore {
           notes: [],
           image: null,
           attachments: [],
-          author: "System Created",
+          author: this.CURRENTUSER.firstName || "System",
           dueDate: null,
           startDate: Date.now(),
           duration: null,

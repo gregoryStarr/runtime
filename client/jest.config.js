@@ -8,8 +8,8 @@
 //     },
 //   };
 
-module.exports = async () => {
-  return {
-    verbose: true,
-  };
-};
+// module.exports = async () => {
+//   return {
+//     verbose: true,
+//   };
+// };

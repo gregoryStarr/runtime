@@ -16,6 +16,7 @@ class Task {
     difficutly = "",
     description = "",
     assignedTo = "",
+    selected = false
   }) {
     this.id = id || uuid();
     this.name = name;
@@ -30,7 +31,7 @@ class Task {
     this.difficutly = difficutly;
     this.description = description;
     this.assignedTo = assignedTo;
-
+    this.selected = selected 
     makeAutoObservable(this);
   }
 
