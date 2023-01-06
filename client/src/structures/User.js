@@ -2,6 +2,17 @@ import { makeAutoObservable } from "mobx";
 import uuid from "react-uuid";
 
 class User {
+    id= new uuid()
+    firstName = ""
+    lastName = ""
+    roles = ""
+    image = ""
+    attachments = ""
+    avatar = ""
+    dueDate = ""
+    startDate = ""
+    department = ""
+    location = ""
   constructor({
     id,
     firstName = "",
@@ -15,7 +26,6 @@ class User {
     department = "",
     location = "",
   }) {
-    this.id = id || uuid();
    this.firstName = firstName
    this.lastName = lastName
    this.roles = roles

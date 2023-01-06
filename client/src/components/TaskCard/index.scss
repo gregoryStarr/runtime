@@ -4,7 +4,7 @@
   border-radius: 4px;
   border: 1px dashed rgba(84, 84, 84, 0.2784313725);
   box-shadow: 3px 3px 5px black;
-  
+
   margin-top: 8px;
   text-shadow: 1px 1px 1px rgb(175 172 172);
   color: #000000;
@@ -13,16 +13,15 @@
   justify-content: space-between;
   border-radius: 10px;
 
-  .selected{
+  .selected {
     background-image: linear-gradient(330deg, #f2711c, #f2c11c 200px);
 
-      .gradient{
-
+    .gradient {
+      background-image: linear-gradient(330deg, #f2711c, #f2c11c 200px);
+      &:hover {
         background-image: linear-gradient(330deg, #f2711c, #f2c11c 200px);
-        &:hover{
-          background-image: linear-gradient(330deg, #f2711c, #f2c11c 200px);
-        }
       }
+    }
   }
 
   a {
@@ -30,7 +29,7 @@
     cursor: pointer !important;
     display: flex;
     font-size: 16px;
-    font-weight: 700;;
+    font-weight: 700;
     padding: 4px 0 0 0;
     justify-content: space-between;
     text-transform: capitalize;
@@ -51,18 +50,18 @@
 
 .gradient {
   position: relative;
-  transition: all .25s ease;
+  transition: all 0.25s ease;
   background-image: repeating-linear-gradient(360deg, rgb(114 114 114 / 98%), #9d9d9d 45px);
   text-shadow: 5px -1px -3px #ffffff;
   z-index: 1;
-  
-  &:hover{
+
+  &:hover {
     box-shadow: inset 0px 0px 12px 1px white;
     background-image: linear-gradient(330deg, #f2711c, #f2c11c 200px);
-  text-shadow: 1px 1px 1px rgb(249 241 241);
-  color: black;
-  border-radius: 5px;
-  box-shadow: 1px 1px 20px black;
+    text-shadow: 1px 1px 1px rgb(249 241 241);
+    color: black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px black;
   }
 }
 .gradient:hover {
@@ -73,7 +72,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 20px black;
 
-  transition: all .25s ease;
+  transition: all 0.25s ease;
 }
 .gradient:hover::before {
   opacity: 1;
@@ -81,5 +80,6 @@
   text-shadow: 1px 1px 1px rgb(249 241 241);
   color: black;
   border-radius: 5px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.583);  transition: all .25s ease;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.583);
+  transition: all 0.25s ease;
 }
