@@ -1,3 +1,4 @@
+import React from 'react'
 import { AppMenu } from "components/AppMenu";
 import { KanbanBoard } from "components/KanbanBoard";
 import Greeting from "components/Login";
@@ -30,19 +31,23 @@ const App = observer(() => {
 
   return (
     <>
-      {" "}
-      {showLoginUI && <Greeting />}
-      <div className="debug">{`show form : ${showLoginUI}/`}</div>
-      <div className="app">
-        <AppMenu />
-        <NoteBoard />
-        <KanbanBoard />
-        {taskStore.CURRENTTASK && (
-          <div className="modal">
-            <TaskDetail />
-          </div>
-        )}
-      </div>
+      {/* <div className="debug">{`show form : ${showLoginUI}/`}</div> */}
+      
+      <React.Suspense fallback={<Greeting loading />}>
+          {taskStore.CURRENTUSER
+            ? `Error loading module "${module}"`
+            : <div className="app">
+            <AppMenu />
+            <NoteBoard />
+            <KanbanBoard />
+            {taskStore.CURRENTTASK && (
+              <div className="modal">
+                <TaskDetail />
+              </div>
+            )}
+          </div>}
+        </React.Suspense>
+     
     </>
   );
 });

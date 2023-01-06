@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   border-radius: 10px;
+  animation: heartBeat 1s all;
 
   .selected {
     background-image: linear-gradient(330deg, #f2711c, #f2c11c 200px);

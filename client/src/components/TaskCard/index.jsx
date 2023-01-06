@@ -17,7 +17,7 @@ const TaskCard = observer(({ task, index }) => {
             taskStore.CURRENTTASK = task;
             taskStore.showModal(true);
           })}
-          className={`kanban-task gradient ${selected && "selected"}`}
+          className={`kanban-task  gradient ${selected && "selected"}`}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
