@@ -56,7 +56,7 @@ class TaskStore {
                     notes: [],
                     image: null,
                     attachments: [],
-                    author: this.CURRENTUSER.firstName || 'System',
+                    author: this?.CURRENTUSER?.firstName || 'System',
                     dueDate: null,
                     startDate: Date.now(),
                     duration: null,

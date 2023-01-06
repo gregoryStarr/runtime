@@ -1,6 +1,7 @@
 .cover {
   position: absolute;
   width: 100vw;
+  display:none;
 
   .hide {
     animation: fade 1s forwards;
