@@ -30,7 +30,6 @@ const App = observer(() => {
 
   return (
     <>
-      {" "}
       {showLoginUI && <Greeting />}
       <div className="debug">{`show form : ${showLoginUI}/`}</div>
       <div className="app">

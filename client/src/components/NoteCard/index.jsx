@@ -23,7 +23,7 @@ const NoteCard = observer(({ task }) => {
           {task.status !== "done" && (
             <Icon
               color="olive"
-              name="azrchive"
+              name="archive"
               onClick={action(() => {
                 task.status = "done";
               })}
