@@ -12,7 +12,13 @@ const TaskCard = observer(({ task, index }) => {
     <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
       {(provided, snapshot) => (
         <div
-          onClick={action(() => {
+        onTouch = {action(() => {
+          task.selected = !task.selected;
+          taskStore.CURRENTTASK = task;
+          taskStore.showModal(true);
+        })}
+
+         onClick = {action(() => {
             task.selected = !task.selected;
             taskStore.CURRENTTASK = task;
             taskStore.showModal(true);

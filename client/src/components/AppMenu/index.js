@@ -13,6 +13,13 @@ const AppMenu = observer((props) => {
             <Menu className="app-menu" color="black" inverted>
                 <Menu.Item>
                     <Button
+                        onTouch={action((e) => {
+                            const task = taskStore.addTask()
+                            taskStore.CURRENTTASK = task
+                            taskStore.showModal(true)
+                        })}
+
+
                         onClick={action((e) => {
                             const task = taskStore.addTask()
                             taskStore.CURRENTTASK = task
@@ -24,6 +31,12 @@ const AppMenu = observer((props) => {
                 </Menu.Item>
                 <Menu.Item>
                     <Button
+                        onTouch={action((e) => {
+                            const task = taskStore.addTask()
+                            taskStore.CURRENTTASK = task
+                            taskStore.showModal(true)
+                        })}
+
                          onClick={action((e) => {
                             const task = taskStore.addTask()
                             taskStore.CURRENTTASK = task
@@ -36,6 +49,11 @@ const AppMenu = observer((props) => {
                 <Menu.Item
                     name="import"
                     active={activeItem === 'import'}
+                    onTouch={action(() => {
+                        taskStore.getDefaultData()
+                    })}
+
+
                     onClick={action(() => {
                         taskStore.getDefaultData()
                     })}

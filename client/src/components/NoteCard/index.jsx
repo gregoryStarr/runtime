@@ -16,6 +16,11 @@ const NoteCard = observer(({ task }) => {
           <Icon
             name="close"
             color="orange"
+            onTouch={action(() => {
+              taskStore.deleteTask(task);
+            })}
+
+
             onClick={action(() => {
               taskStore.deleteTask(task);
             })}
@@ -32,6 +37,10 @@ const NoteCard = observer(({ task }) => {
           {task.status === "todo" && (
             <Icon
               name="share square outline"
+              onTouch={action(() => {
+                task.status = "";
+              })}
+              
               onClick={action(() => {
                 task.status = "";
               })}
@@ -40,6 +49,11 @@ const NoteCard = observer(({ task }) => {
           {task.status === "" && (
             <Icon
               name="play"
+              onTouch={action(() => {
+                task.status = "todo";
+              })}
+
+
               onClick={action(() => {
                 task.status = "todo";
               })}
