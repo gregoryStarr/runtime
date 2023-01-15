@@ -30,7 +30,7 @@ const AppMenu = observer((props) => {
                             taskStore.showModal(true)
                         })}
                     >
-                        Debug Now
+                        Debug Now !
                     </Button>
                 </Menu.Item>
                 <Menu.Item
