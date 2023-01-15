@@ -1,4 +1,4 @@
-const LoggerSingleton = (function () {
+const Logger = (function () {
   let logInstance = {}  
   let instance = {logInstance:logInstance}
     
@@ -41,4 +41,4 @@ const LoggerSingleton = (function () {
   }
 })()
 
-export { LoggerSingleton}
+export { Logger}

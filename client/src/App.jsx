@@ -8,6 +8,7 @@ import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
 import { TaskStoreContext } from "stores/TaskStoreContext";
 import "./App.scss";
+
 const App = observer(() => {
   const taskStore = useContext(TaskStoreContext);
   const [showLoginUI, setShowLoginUI] = useState(false);

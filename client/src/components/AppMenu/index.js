@@ -24,8 +24,10 @@ const AppMenu = observer((props) => {
                 </Menu.Item>
                 <Menu.Item>
                     <Button
-                        onClick={action((e) => {
-                            debugger
+                         onClick={action((e) => {
+                            const task = taskStore.addTask()
+                            taskStore.CURRENTTASK = task
+                            taskStore.showModal(true)
                         })}
                     >
                         Debug Now
